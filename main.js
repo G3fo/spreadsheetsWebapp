@@ -1,6 +1,5 @@
 function getBalance() {
   fetch("https://spreadsheetapimb.herokuapp.com/api/balance", {
-    mode: "no-cors",
     headers: new Headers({
       "Content-Type": "application/json",
       Accept: "application/json",
