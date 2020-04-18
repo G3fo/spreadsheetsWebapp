@@ -1,13 +1,14 @@
-function getBalance() {
-  fetch("https://spreadsheetapimb.herokuapp.com/api/balance", {
-    headers: new Headers({
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    }),
+var balance = document.getElementById("balance");
+
+fetch("https://spreadsheetapimb.herokuapp.com/api/balance", {
+  credentials: "omit",
+})
+  .then((response) => response.json())
+  .then((data) => {
+    balance.innerHTML = data.balance;
+    console.log(balance); // Prints result from `response.json()` in getRequest
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data); // Prints result from `response.json()` in getRequest
-    })
-    .catch((error) => console.log(error));
-}
+  .catch((error) => {
+    balance.innerHTML = "Error";
+    console.log(error);
+  });
